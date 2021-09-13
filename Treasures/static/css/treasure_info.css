@@ -1,0 +1,86 @@
+#wrapper{
+    display: flex;
+    flex-direction: column;
+    /* background: url('https://wallpapercave.com/wp/dH8ljb2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden; */
+}
+#imagespec{
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
+}
+#header{
+    display: flex;
+    justify-content: space-between;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: black;
+    padding: 25px;
+    margin-top: -20px;
+}
+#main_content{
+    display: flex;
+    border-style: solid;
+    border-color: black;
+    justify-content: space-between;
+    padding:25px;
+    margin:25px 0px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+#stats{
+    width: 650px;
+    height: 600px;
+}
+#hints{
+    padding-left: 50px;
+}
+#post_board{
+    min-height: 200px;
+    border-style: solid;
+    border-color: black;
+    padding: 25px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+#create_post{
+    border-style: solid;
+    border-color: black;
+    padding: 25px;
+    margin-bottom: 25px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+h1{
+    color: blue;
+}
+#post_indent{
+    margin-left: 100px;
+    padding: 25px;
+}
+#post{
+    padding: 25px;
+    margin-bottom: 50px;
+    border-style: dotted;
+    border-color: black;
+    border-radius: 10px;
+}
+#form_indent{
+    margin-left: 100px;
+    padding: 10px 25px;
+}
+.postbubble{
+    background-color:lightgray;
+    border-radius: 10px;
+    padding:10px;
+    margin-bottom: 10px;
+}
+#bg {
+    background: url('https://wallpapercave.com/wp/dH8ljb2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 1400px;
+    overflow: hidden;
+}

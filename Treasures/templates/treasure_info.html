@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/treasure_info.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div id="bg">
+        </br>
+        <div class="container" id="wrapper">
+            <div id="header">
+                <div>
+                    <h1>Hello {{this_user.first_name}}</h1>
+                </div>
+                <div>
+                    <a class="btn btn-primary bar" href="/dashboard">Dashboard</a>
+                    <a class="btn btn-primary bar" href="/my_account">My Account</a>
+                    <a class="btn btn-primary bar" href="/logout">Logout</a>
+                </div>
+            </div>
+            <div id="main_content">
+                <div id="stats">
+                    <h3>{{this_treasure.name}}</h3>
+                    <p>Description: {{this_treasure.description}}</p>
+                    <p><img id="imagespec" src="{{ this_treasure.image.url}}" alt="{{ this_treasure.name }}"></p>
+                    <!-- {% for this_treasure in treasures %}
+                        {% if treasure.created_by.id == request.session.user_id %}
+                        <p>Location: {{this_treasure.location}}</p>
+                        {% endif %}
+                    {% endfor %} -->
+                    <p>Posted by: {{this_treasure.created_by.first_name}}</p>
+                    <p>Posted on: {{this_treasure.created_at}}</p>
+                </div>
+                <div class="container" id="hints">
+                    <h2>Hints:</h2>
+                    <a class="btn btn-warning" href="{{this_treasure.map_url}}" target="_blank" rel="noopener noreferrer">Treasure Map</a>
+                    {% for hint in this_treasure.has_hints.all %}
+                        <h5>• {{hint.content}}</h5>
+                        {% if hint.creator.id == request.session.user_id %}
+                            <a class="btn btn-outline-danger" href="delete_hint/{{this_treasure.id}}/{{hint.id}}" method="POST">Delete Hint</a>
+                        {% endif %}
+                    {% endfor %}
+                    {% if this_treasure.created_by.id == request.session.user_id %}
+                    <form action="create_hint/{{this_treasure.id}}" method="POST">
+                        {% csrf_token %}
+                        <p>Create a Hint</p><p><textarea name="hint_content" rows="4" cols="50"></textarea></p>
+                        <input class="btn btn-success" type="submit" Value="Create a Hint">
+                    </form>
+                    {% endif %}
+                    <!-- {% if hint not in this_treasure %}
+                        <p>No Hints Yet!</p>
+                    {% endif %} -->
+                </div>
+            </div>
+            <div id="create_post">
+                <form action="create_post/{{this_treasure.id}}" method="POST">
+                    {% csrf_token %}
+                    <h3>Create a Post<h3><textarea name="post_content" rows="4" cols="80"></textarea></p>
+                    <input class="btn btn-success" type="submit" Value="Create a Post">
+                </form>
+            </div>
+            <div id="post_board">
+            <h3>Join the discussion and help track down the treasure!</h3>
+            </br>
+            <h2>Posts by Users:</h2>
+                <!-- {% if this_treasure.has_posts %} -->
+                    {% for post in this_treasure.has_posts.all %}
+                        <div id="post">
+                            <div class="postbubble">
+                                <h3>{{post.content}}</h3>
+                                <p>Posted by: {{post.creator.first_name}} {{post.creator.last_name}} - {{post.created_at}}</p>
+                                {% if post.creator.id == request.session.user_id %}
+                                    <a class="btn btn-outline-danger" href="delete_post/{{this_treasure.id}}/{{post.id}}" method="POST">Delete Post</a>
+                                {% endif %}
+                            </div>
+                            {% if post.has_comments %}
+                                {% for has_comment in post.has_comments.all %}
+                                <div id="post_indent" class="postbubble">
+                                    <h5>{{has_comment.content}}</h5>
+                                    <p>{{has_comment.creator.first_name}} {{has_comment.creator.last_name}} - {{has_comment.created_at}}</p>
+                                    {% if has_comment.creator.id == request.session.user_id %}
+                                        <a class="btn btn-outline-danger" href="delete_comment/{{this_treasure.id}}/{{post.id}}/{{has_comment.id}}" method="POST">Delete Comment</a>
+                                    {% endif %}
+                                </div>
+                                {% endfor %}
+                            {% endif %}
+                            <div id="form_indent">
+                                <form action="create_comment/{{this_treasure.id}}/{{post.id}}" method="POST">
+                                    {% csrf_token %}
+                                    <p>Post a Comment</p><p><textarea name="create_comment" rows="4" cols="50"></textarea></p>
+                                    <input class="btn btn-success" type="submit" Value="Write a Comment">
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                <!-- {% endif %} -->
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script> -->
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+</body>
+</html>

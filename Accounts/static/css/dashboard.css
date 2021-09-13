@@ -1,0 +1,48 @@
+h1{
+    color: blue;
+}
+#wrapper{
+    /* height: 1200px;
+    width: 1900px; */
+    display: flex;
+    flex-direction: column;
+    /* background: url('https://wallpapercave.com/wp/dH8ljb2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden; */
+}
+#header{
+    display: flex;
+    justify-content: space-between;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: black;
+    padding: 25px;
+    margin-top: -20px;
+}
+#treasure_table{
+    background-color: whitesmoke;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
+}
+/* .bar{
+    padding:0px 10px;
+    margin: 10px 10px;
+} */
+.deletespace{
+    margin: 0px 50px;
+}
+#actionspace{
+    padding:0px 0px 8px 60px;
+}
+#bg {
+    background: url('https://wallpapercave.com/wp/dH8ljb2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 1400px;
+    overflow: hidden;
+}

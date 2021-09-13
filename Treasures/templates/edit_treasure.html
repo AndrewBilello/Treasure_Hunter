@@ -1,0 +1,54 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper"> -->
+{% extends 'basetreasure.html' %}
+
+{% block content %}
+<div id="header">
+    <div>
+        <h1>Hello {{this_user.first_name}}</h1>
+    </div>
+    <div>
+        <a class="btn btn-primary bar" href="/dashboard">Dashboard</a>
+        <a class="btn btn-primary bar" href="/my_account">My Account</a>
+        <a class="btn btn-primary bar" href="/logout">Logout</a>
+    </div>
+</div>
+</br>
+<div id="treasure_box">
+    <div id="boarder">
+        <div id="edittreasure">
+            <form action='update_treasure{{treasure.id}}' method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h2>Edit Your Treasure</h2>
+                <br>
+                <p>Treasure Name<input type='text' name='name' value='{{treasure.name}}'></p>
+                <p>Description<input type='text' name='description' value='{{treasure.description}}'></p>
+                <p>Location<input type='text' name='location' value='{{treasure.location}}'></p>
+                <p>Image <input type="file" name="image" accept="image/*"></p>
+                <p>Map URL <input name="map_url" type="url"></p>
+                <button class="btn btn-success" type="submit">Update Treasure</button>
+            </form>
+        </div>
+        <div id="treasure_errors">
+            {% if messages %}
+                <ul class="messages">    
+                    {% for message in messages %}    
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+    <!-- </div>
+</body>
+</html> -->

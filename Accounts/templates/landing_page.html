@@ -1,0 +1,36 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper"> -->
+{% extends 'base_log_reg.html' %}
+
+{% block content %}
+<div id="Login">
+    <h1>Login</h1>
+    <form action ="/login" method="POST">
+        {% csrf_token %}
+        <p>Email <input name="email" type="text"></p>
+        <p>Password <input name="password" type="password"></p>
+        <input class="btn btn-success" type="submit" Value="Login" id="loginbutton">
+    </form>
+    <p class="spacedown">Not a treasure hunter yet?  <a href="/registration" method="POST">Register Here!</a></p>
+</div>
+<div id="errors">
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock %}
+    <!-- </div>
+</body>
+</html> -->
