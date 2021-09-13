@@ -39,6 +39,9 @@ def delete_treasure(request, treasure_id):
     return redirect('/dashboard')
 
 def treasure_info(request, treasure_id):
+    if 'user_id' not in request.session:
+        return redirect('/')
+
     context = {
         'this_user': User.objects.get(id = request.session['user_id']),
         'this_treasure': Treasure.objects.get(id=treasure_id)
@@ -46,6 +49,9 @@ def treasure_info(request, treasure_id):
     return render(request, 'treasure_info.html', context)
 
 def edit_treasure(request, treasure_id):
+    if 'user_id' not in request.session:
+        return redirect('/')
+
     context = {
         'this_user': User.objects.get(id = request.session['user_id']),
         'this_treasure': Treasure.objects.get(id=treasure_id)
@@ -78,6 +84,9 @@ def create_post(request, treasure_id):
     return redirect(f'/treasure/{treasure_id}')
 
 def delete_post(request, treasure_id, post_id):
+    if 'user_id' not in request.session:
+        return redirect('/')
+
     post = Post.objects.get(id=post_id)
     post.delete()
     return redirect(f'/treasure/{treasure_id}')
@@ -92,6 +101,9 @@ def create_comment(request, treasure_id, post_id):
     return redirect(f'/treasure/{treasure_id}')
 
 def delete_comment(request, treasure_id, post_id, comment_id):
+    if 'user_id' not in request.session:
+        return redirect('/')
+
     comment = Comment.objects.get(id=comment_id)
     comment.delete()
     return redirect(f'/treasure/{treasure_id}')
@@ -105,6 +117,9 @@ def create_hint(request, treasure_id):
     return redirect(f'/treasure/{treasure_id}')
 
 def delete_hint(request, treasure_id, hint_id):
+    if 'user_id' not in request.session:
+        return redirect('/')
+
     hint = Hint.objects.get(id=hint_id)
     hint.delete()
     return redirect(f'/treasure/{treasure_id}')

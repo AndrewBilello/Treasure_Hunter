@@ -2,14 +2,8 @@ h1{
     color: blue;
 }
 #wrapper{
-    /* height: 1200px;
-    width: 1900px; */
     display: flex;
     flex-direction: column;
-    /* background: url('https://wallpapercave.com/wp/dH8ljb2.jpg') no-repeat center center fixed;
-    background-size: cover;
-    height: 100%;
-    overflow: hidden; */
 }
 #header{
     display: flex;
@@ -30,10 +24,6 @@ h1{
     border-color: black;
     border-radius: 10px;
 }
-/* .bar{
-    padding:0px 10px;
-    margin: 10px 10px;
-} */
 .deletespace{
     margin: 0px 50px;
 }

@@ -52,7 +52,6 @@ def logout(request):
     request.session.flush()
     return redirect('/')
 
-# Might need to be in the treasure app
 def dashboard(request):
     if 'user_id' not in request.session:
         return redirect('/')
