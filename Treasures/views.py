@@ -13,15 +13,18 @@ def new_treasure(request):
     return render(request, 'new_treasure.html', context)
 
 def create_treasure(request):
+    print("Post", request.POST)
+    print(request.FILES)
     if request.method != "POST":
         return redirect('/dashboard')
-    errors = Treasure.objects.treasure_validator(request.POST)
+    errors = Treasure.objects.treasure_validator(request.POST, request.FILES)
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
         return redirect('/treasure/new_treasure')
     user = User.objects.get(id=request.session['user_id'])
-    print(request.POST)
+
+    print("Post", request.POST)
     print(request.FILES)
     Treasure.objects.create(
         name = request.POST['name'],
@@ -76,6 +79,13 @@ def update_treasure(request, treasure_id):
     return redirect('/dashboard')
 
 def create_post(request, treasure_id):
+    if request.method != "POST":
+        return redirect('/dashboard')
+    errors = Post.objects.post_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect(f"/treasure/{treasure_id}")
     if request.method =="POST":
         if 'user_id' in request.session:
             user = User.objects.get(id=request.session['user_id'])
@@ -92,6 +102,13 @@ def delete_post(request, treasure_id, post_id):
     return redirect(f'/treasure/{treasure_id}')
 
 def create_comment(request, treasure_id, post_id):
+    if request.method != "POST":
+        return redirect('/dashboard')
+    errors = Comment.objects.comment_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect(f"/treasure/{treasure_id}")
     if request.method =="POST":
         if 'user_id' in request.session:
             user = User.objects.get(id=request.session['user_id'])
@@ -109,6 +126,13 @@ def delete_comment(request, treasure_id, post_id, comment_id):
     return redirect(f'/treasure/{treasure_id}')
 
 def create_hint(request, treasure_id):
+    if request.method != "POST":
+        return redirect('/dashboard')
+    errors = Hint.objects.hint_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect(f"/treasure/{treasure_id}")
     if request.method =="POST":
         if 'user_id' in request.session:
             user = User.objects.get(id=request.session['user_id'])

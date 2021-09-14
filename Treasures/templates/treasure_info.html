@@ -46,15 +46,37 @@
                         <p>Create a Hint</p><p><textarea name="hint_content" rows="4" cols="50"></textarea></p>
                         <input class="btn btn-success" type="submit" Value="Create a Hint">
                     </form>
+                    </br>
+                    <div id="hint_errors">
+                        {% if messages %}
+                        <ul class="messages">    
+                            {% for message in messages %}    
+                                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
                     {% endif %}
                 </div>
             </div>
             <div id="create_post">
-                <form action="create_post/{{this_treasure.id}}" method="POST">
-                    {% csrf_token %}
-                    <h3>Create a Post<h3><textarea name="post_content" rows="4" cols="80"></textarea></p>
-                    <input class="btn btn-success" type="submit" Value="Create a Post">
-                </form>
+                <div id="post_creation_box">
+                    <form action="create_post/{{this_treasure.id}}" method="POST">
+                        {% csrf_token %}
+                        <h3>Create a Post<h3><textarea name="post_content" rows="4" cols="80"></textarea></p>
+                        <input class="btn btn-success" type="submit" Value="Create a Post">
+                    </form>
+                </div>
+                </br>
+                <div id="post_errors">
+                    {% if messages %}
+                    <ul class="messages">    
+                        {% for message in messages %}    
+                            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
             </div>
             <div id="post_board">
             <h3>Join the discussion and help track down the treasure!</h3>
@@ -82,11 +104,23 @@
                                 {% endfor %}
                             {% endif %}
                             <div id="form_indent">
-                                <form action="create_comment/{{this_treasure.id}}/{{post.id}}" method="POST">
-                                    {% csrf_token %}
-                                    <p>Post a Comment</p><p><textarea name="create_comment" rows="4" cols="50"></textarea></p>
-                                    <input class="btn btn-success" type="submit" Value="Write a Comment">
-                                </form>
+                                <div id="comment_creation">
+                                    <form action="create_comment/{{this_treasure.id}}/{{post.id}}" method="POST">
+                                        {% csrf_token %}
+                                        <p>Post a Comment</p><p><textarea name="create_comment" rows="4" cols="50"></textarea></p>
+                                        <input class="btn btn-success" type="submit" Value="Write a Comment">
+                                    </form>
+                                </div>
+                                </br>
+                                <div id="comment_errors">
+                                    {% if messages %}
+                                    <ul class="messages">    
+                                        {% for message in messages %}    
+                                            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
                     {% endfor %}
