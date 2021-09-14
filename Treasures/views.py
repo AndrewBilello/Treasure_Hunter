@@ -13,8 +13,6 @@ def new_treasure(request):
     return render(request, 'new_treasure.html', context)
 
 def create_treasure(request):
-    print("Post", request.POST)
-    print(request.FILES)
     if request.method != "POST":
         return redirect('/dashboard')
     errors = Treasure.objects.treasure_validator(request.POST, request.FILES)
@@ -23,9 +21,6 @@ def create_treasure(request):
             messages.error(request, value)
         return redirect('/treasure/new_treasure')
     user = User.objects.get(id=request.session['user_id'])
-
-    print("Post", request.POST)
-    print(request.FILES)
     Treasure.objects.create(
         name = request.POST['name'],
         description = request.POST['description'],
