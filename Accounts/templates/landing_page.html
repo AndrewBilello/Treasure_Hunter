@@ -3,10 +3,11 @@
 {% block content %}
 <div id="Login">
     <h1>Login</h1>
-    <form action ="/login" method="POST">
+    <form class="logreg" action ="/login" method="POST">
         {% csrf_token %}
-        <p>Email <input name="email" type="text"></p>
-        <p>Password <input name="password" type="password"></p>
+        <label for="email">Email </label> <input name="email" type="text">
+        <label for="password">Password </label> 
+        <input name="password" type="password">
         <input class="btn btn-success" type="submit" Value="Login" id="loginbutton">
     </form>
     <p class="spacedown">Not a treasure hunter yet?  <a href="/registration" method="POST">Register Here!</a></p>

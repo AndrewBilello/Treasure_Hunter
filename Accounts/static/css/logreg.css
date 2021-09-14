@@ -1,6 +1,8 @@
 h1{
     color: blue;
-    margin: 0px 0px 20px 115px;
+    margin: 0px 0px 20px 0px;
+    display: flex;
+    justify-content: center;
 }
 #wrapper{
     /* height: 1200px;
@@ -11,12 +13,16 @@ h1{
 }
 #user_box{
     width: 550px;
-    height: 650px;
+    min-height: 500px;
     background-color: whitesmoke;
     padding: 100px;
     border-radius: 100px;
     border-style: solid;
     border-color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
 }
 .spacedown{
     padding: 20px;
@@ -26,4 +32,16 @@ h1{
     background-size: cover;
     min-height: 1400px;
     overflow: hidden;
+}
+label{
+    display: block;
+}
+input{
+    margin-bottom: 15px;
+    display: block;
+}
+.logreg{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }

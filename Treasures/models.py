@@ -12,8 +12,9 @@ class TreasureManager(models.Manager):
             errors['location'] = "Location must be at least 3 characters"
         if len(post_data['map_url']) < 1:
             errors['map_url'] = "Treasure needs a map"
-        # if len(request.FILES['image']) < 1:
+        # if len(post_data['image']) == False:
         #     errors['image'] = "No image uploaded"
+        # can't figure this out!
         return errors
 
 class Treasure(models.Model):

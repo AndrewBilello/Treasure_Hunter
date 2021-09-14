@@ -1,6 +1,11 @@
 h1{
     color: blue;
 }
+h2{
+    margin: 0px 0px 20px 0px;
+    display: flex;
+    justify-content: center;
+}
 #header{
     display: flex;
     justify-content: space-between;
@@ -26,7 +31,19 @@ h1{
 #bg {
     background: url('https://wallpapercave.com/wp/dH8ljb2.jpg') no-repeat center center fixed;
     background-size: cover;
-    min-height: 1440px;
+    min-height: 1350px;
     width: 100%;
     overflow: hidden;
+}
+label{
+    display: block;
+}
+input{
+    margin-bottom: 15px;
+    display: block;
+}
+.logreg{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }

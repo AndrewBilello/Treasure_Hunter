@@ -3,13 +3,13 @@
 {% block content %}
 <div id="regbox">
     <h1>Register</h1>
-    <form action="/register" method="POST">
+    <form class="logreg" action="/register" method="POST">
         {% csrf_token %}
-        <p>First Name <input name="first_name" type="text"></p>
-        <p>Last Name <input name="last_name" type="text"></p>
-        <p>Email <input name="email" type="text"></p>
-        <p>Password <input name="password" type="password"></p>
-        <p>Confirm Password <input name="confirm_password" type="password"></p>
+        <label for="first_name">First Name </label> <input name="first_name" type="text">
+        <label for="last_name">Last Name </label> <input name="last_name" type="text">
+        <label for="email">Email </label> <input name="email" type="text">
+        <label for="password">Password </label> <input name="password" type="password">
+        <label for="confirm_password">Confirm Password </label><input name="confirm_password" type="password">
         <input class="btn btn-success" type="submit" Value="Register" id="registerbutton">
     </form>
     <p class="spacedown">Registered already? <a href="/">Back to Login</a></p>

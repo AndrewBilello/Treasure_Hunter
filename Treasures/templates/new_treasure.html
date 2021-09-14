@@ -15,18 +15,19 @@
 <div id="treasure_box">
     <div id="boarder">
         <div id="treasure_form">
-            <form method="post" action="create_treasure" enctype="multipart/form-data">
+            <form class="logreg" method="post" action="create_treasure" enctype="multipart/form-data">
                 {% csrf_token %}
                 <h2>Create a New Treasure</h2>
                 <br>
-                <p>Treasure Name <input name="name" type="text"></p>
-                <p>Description <input name="description" type="text"></p>
-                <p>Location <input name="location" type="text"></p>
-                <p>Image <input type="file" name="image" accept="image/*"></p>
-                <p>Map URL <input name="map_url" type="url"></p>
+                <label for="name">Treasure Name </label> <input name="name" type="text">
+                <label for="description">Description </label> <input name="description" type="text">
+                <label for="location">Location </label> <input name="location" type="text">
+                <label for="image">Image </label> <input type="file" name="image" accept="image/*">
+                <label for="map_url">Map URL </label> <input name="map_url" type="url">
                 <button class="btn btn-success" type="submit">Create Treasure</button>
             </form>
         </div>
+        </br>
         <div id="treasure_errors">
             {% if messages %}
             <ul class="messages">    

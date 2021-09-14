@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from .models import Treasure, Post, Comment
+from .models import Treasure, Post, Comment, Hint
 
 admin.site.register(Treasure)
 admin.site.register(Post)
 admin.site.register(Comment)
-# Register your models here.
+admin.site.register(Hint)

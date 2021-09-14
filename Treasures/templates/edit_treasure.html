@@ -15,18 +15,19 @@
 <div id="treasure_box">
     <div id="boarder">
         <div id="edittreasure">
-            <form action='update_treasure{{treasure.id}}' method="POST" enctype="multipart/form-data">
+            <form class="logreg" action='update_treasure{{treasure.id}}' method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <h2>Edit Your Treasure</h2>
                 <br>
-                <p>Treasure Name<input type='text' name='name' value='{{treasure.name}}'></p>
-                <p>Description<input type='text' name='description' value='{{treasure.description}}'></p>
-                <p>Location<input type='text' name='location' value='{{treasure.location}}'></p>
-                <p>Image <input type="file" name="image" accept="image/*"></p>
-                <p>Map URL <input name="map_url" type="url"></p>
+                <label for="name">Treasure Name </label> <input type='text' name='name' value='{{treasure.name}}'>
+                <label for="description">Description </label> <input type='text' name='description' value='{{treasure.description}}'>
+                <label for="location">Location Name </label> <input type='text' name='location' value='{{treasure.location}}'>
+                <label for="image">Image </label> <input type="file" name="image" accept="image/*">
+                <label for="map_url">Map URL </label> <input name="map_url" type="url">
                 <button class="btn btn-success" type="submit">Update Treasure</button>
             </form>
         </div>
+        </br>
         <div id="treasure_errors">
             {% if messages %}
                 <ul class="messages">    

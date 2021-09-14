@@ -28,11 +28,6 @@
                     <h3>{{this_treasure.name}}</h3>
                     <p>Description: {{this_treasure.description}}</p>
                     <p><img id="imagespec" src="{{ this_treasure.image.url}}" alt="{{ this_treasure.name }}"></p>
-                    <!-- {% for this_treasure in treasures %}
-                        {% if treasure.created_by.id == request.session.user_id %}
-                        <p>Location: {{this_treasure.location}}</p>
-                        {% endif %}
-                    {% endfor %} -->
                     <p>Posted by: {{this_treasure.created_by.first_name}}</p>
                     <p>Posted on: {{this_treasure.created_at}}</p>
                 </div>
@@ -52,9 +47,6 @@
                         <input class="btn btn-success" type="submit" Value="Create a Hint">
                     </form>
                     {% endif %}
-                    <!-- {% if hint not in this_treasure %}
-                        <p>No Hints Yet!</p>
-                    {% endif %} -->
                 </div>
             </div>
             <div id="create_post">

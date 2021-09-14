@@ -26,10 +26,11 @@
     margin:25px 0px;
     background-color: whitesmoke;
     border-radius: 10px;
+    min-height: 600px;
 }
 #stats{
-    width: 650px;
-    height: 600px;
+    min-width: 650px;
+    min-height: 500px;
 }
 #hints{
     padding-left: 50px;
