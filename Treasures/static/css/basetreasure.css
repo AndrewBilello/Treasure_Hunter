@@ -27,6 +27,7 @@ h2{
     padding:25px;
     background-color: whitesmoke;
     border-radius: 10px;
+    min-width: 380px;
 }
 #bg {
     background: url('https://wallpapercave.com/wp/dH8ljb2.jpg') no-repeat center center fixed;

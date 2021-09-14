@@ -47,11 +47,22 @@
                         <input class="btn btn-success" type="submit" Value="Create a Hint">
                     </form>
                     </br>
-                    <div id="hint_errors">
+                    <!-- <div id="hint_errors">
                         {% if messages %}
                         <ul class="messages">    
                             {% for message in messages %}    
                                 <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div> -->
+                    <div id="hint_errors">
+                        {% if messages %}
+                        <ul class="messages">    
+                            {% for message in messages %} 
+                                {% if 'hint' in message.tags %}
+                                <li class="{{ message.tags }}">{{ message }}</li>
+                                {% endif %}    
                             {% endfor %}
                         </ul>
                         {% endif %}
@@ -71,8 +82,10 @@
                 <div id="post_errors">
                     {% if messages %}
                     <ul class="messages">    
-                        {% for message in messages %}    
-                            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                        {% for message in messages %} 
+                            {% if 'post' in message.tags %}
+                                <li class="{{ message.tags }}">{{ message }}</li>
+                            {% endif %}    
                         {% endfor %}
                     </ul>
                     {% endif %}
@@ -82,7 +95,6 @@
             <h3>Join the discussion and help track down the treasure!</h3>
             </br>
             <h2>Posts by Users:</h2>
-                <!-- {% if this_treasure.has_posts %} -->
                     {% for post in this_treasure.has_posts.all %}
                         <div id="post">
                             <div class="postbubble">
@@ -115,8 +127,10 @@
                                 <div id="comment_errors">
                                     {% if messages %}
                                     <ul class="messages">    
-                                        {% for message in messages %}    
-                                            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                                        {% for message in messages %} 
+                                            {% if 'comment' in message.tags %}
+                                                <li class="{{ message.tags }}">{{ message }}</li>
+                                            {% endif %}    
                                         {% endfor %}
                                     </ul>
                                     {% endif %}
@@ -124,7 +138,6 @@
                             </div>
                         </div>
                     {% endfor %}
-                <!-- {% endif %} -->
             </div>
         </div>
     </div>

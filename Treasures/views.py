@@ -64,7 +64,7 @@ def edit_treasure(request, treasure_id):
 def update_treasure(request, treasure_id):
     if request.method != "POST":
         return redirect('/dashboard')
-    errors = Treasure.objects.treasure_validator(request.POST)
+    errors = Treasure.objects.treasure_validator(request.POST, request.FILES)
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
@@ -84,7 +84,7 @@ def create_post(request, treasure_id):
     errors = Post.objects.post_validator(request.POST)
     if len(errors) > 0:
         for key, value in errors.items():
-            messages.error(request, value)
+            messages.error(request, value, extra_tags='post')
         return redirect(f"/treasure/{treasure_id}")
     if request.method =="POST":
         if 'user_id' in request.session:
@@ -107,7 +107,7 @@ def create_comment(request, treasure_id, post_id):
     errors = Comment.objects.comment_validator(request.POST)
     if len(errors) > 0:
         for key, value in errors.items():
-            messages.error(request, value)
+            messages.error(request, value, extra_tags='comment')
         return redirect(f"/treasure/{treasure_id}")
     if request.method =="POST":
         if 'user_id' in request.session:
@@ -131,7 +131,7 @@ def create_hint(request, treasure_id):
     errors = Hint.objects.hint_validator(request.POST)
     if len(errors) > 0:
         for key, value in errors.items():
-            messages.error(request, value)
+            messages.error(request, value, extra_tags='hint')
         return redirect(f"/treasure/{treasure_id}")
     if request.method =="POST":
         if 'user_id' in request.session:
